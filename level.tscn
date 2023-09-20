@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://mkbi0v2boexs"]
+
+[ext_resource type="PackedScene" uid="uid://cryk4dtjqguph" path="res://player/bird.tscn" id="1_7oowg"]
+[ext_resource type="Script" path="res://pipe/PipePairSpawner.cs" id="1_e8t8p"]
+[ext_resource type="PackedScene" uid="uid://b8vbl8aqxqfxo" path="res://pipe/pipe-pair.tscn" id="2_aaan5"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_e8t8p")
+SpawnPointX = 1200.0
+PipePair = ExtResource("2_aaan5")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.92549, 0.686275, 0.956863, 1)
+
+[node name="Bird" parent="." instance=ExtResource("1_7oowg")]
+position = Vector2(253, 354)
+FlapForce = 2.5
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

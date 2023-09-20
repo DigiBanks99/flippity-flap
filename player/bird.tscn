@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cryk4dtjqguph"]
+
+[ext_resource type="Script" path="res://player/Bird.cs" id="1_4mxhk"]
+[ext_resource type="Texture2D" uid="uid://cspu434l5mouf" path="res://assets/birdbody.png" id="1_xkt3l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yqo3"]
+radius = 216.002
+
+[node name="Bird" type="CharacterBody2D"]
+scale = Vector2(0.16, 0.16)
+collision_mask = 6
+script = ExtResource("1_4mxhk")
+FlapForce = 2500.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xkt3l")
+offset = Vector2(8, -45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8yqo3")
+
+[node name="PipeDetector" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeDetector"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_8yqo3")
+
+[node name="GapDetector" type="Area2D" parent="."]
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GapDetector"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_8yqo3")
+
+[connection signal="body_entered" from="PipeDetector" to="." method="OnPipeDetectorBodyEntered"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8vbl8aqxqfxo"]
+
+[ext_resource type="PackedScene" uid="uid://cf5ullhyt2fvd" path="res://pipe/pipe.tscn" id="1_e22pr"]
+[ext_resource type="Script" path="res://pipe/PipePair.cs" id="2_m7lpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djuv1"]
+size = Vector2(267, 1323.67)
+
+[node name="Pipe-pair" type="Node2D"]
+script = ExtResource("2_m7lpo")
+
+[node name="TopPipe" parent="." instance=ExtResource("1_e22pr")]
+position = Vector2(0, -410)
+
+[node name="BottomPipe" parent="." instance=ExtResource("1_e22pr")]
+position = Vector2(0, 410)
+rotation = 3.14159
+
+[node name="Gap" type="Area2D" parent="."]
+position = Vector2(45, 0)
+scale = Vector2(0.240001, 0.240001)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gap"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_djuv1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(75, 0, 130, 20)
+
+[connection signal="body_entered" from="Gap" to="." method="OnGapBodyEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="OnScreenExited"]

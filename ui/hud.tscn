@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6cyycwnfm4tp"]
+[gd_scene load_steps=5 format=3 uid="uid://c6cyycwnfm4tp"]
 
 [ext_resource type="Script" path="res://ui/Hud.cs" id="1_jpgci"]
+[ext_resource type="Theme" uid="uid://drw1eeirkwu0v" path="res://assets/flippity-flap-theme.tres" id="1_qo62k"]
 [ext_resource type="PackedScene" uid="uid://cswt2ae18j12g" path="res://ui/quit_button.tscn" id="2_l1pki"]
 [ext_resource type="PackedScene" uid="uid://dc2rl6tddoyt2" path="res://ui/restart_button.tscn" id="2_pbxd3"]
 
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_qo62k")
 script = ExtResource("1_jpgci")
 
 [node name="ScoreLabel" type="Label" parent="."]

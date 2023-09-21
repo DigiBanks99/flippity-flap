@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://drrsgsxen0rnu"]
+[gd_scene load_steps=6 format=3 uid="uid://drrsgsxen0rnu"]
 
+[ext_resource type="Theme" uid="uid://drw1eeirkwu0v" path="res://assets/flippity-flap-theme.tres" id="1_bl3q2"]
 [ext_resource type="Script" path="res://ui/MainMenu.cs" id="1_gxgh0"]
 [ext_resource type="PackedScene" uid="uid://brvenkgeioo2" path="res://background_layer.tscn" id="1_jur65"]
 [ext_resource type="PackedScene" uid="uid://mkbi0v2boexs" path="res://level.tscn" id="2_encu8"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_bl3q2")
 script = ExtResource("1_gxgh0")
 NextScene = ExtResource("2_encu8")
 

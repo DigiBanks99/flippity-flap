@@ -30,6 +30,7 @@ rect = Rect2(75, 0, 130, 20)
 
 [node name="TingPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_un1ac")
+volume_db = -11.961
 
 [connection signal="body_entered" from="Gap" to="." method="OnGapBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="OnScreenExited"]

@@ -1,9 +1,14 @@
 using FlippityFlap;
 using Godot;
+using GodotUtilities;
 
+[Scene]
 public partial class Bird : CharacterBody2D
 {
     private float _defaultGravity;
+
+    [Node]
+    private AnimationPlayer _animationPlayer;
 
     [Export]
     public float FlapForce { get; set; }
@@ -19,7 +24,9 @@ public partial class Bird : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
+
         _defaultGravity = GodotUtilities.ProjectSettingsExtended.GetSettingOrDefault<float>("physics/2d/default_gravity");
+        WireNodes();
     }
 
 
@@ -62,15 +69,26 @@ public partial class Bird : CharacterBody2D
     {
         if (Input.IsActionPressed(InputActionMap.Flap))
         {
-            if (!CanFlap())
+            if (CanFlap())
+            {
+                Velocity = Velocity with
+                {
+                    Y = Velocity.Y - FlapForce * (float)delta * Input.GetActionStrength(InputActionMap.Flap) * _defaultGravity * GravityScale
+                };
+            }
+        }
+
+        if (Input.IsActionJustPressed(InputActionMap.Flap))
+        {
+            if (IsDead)
             {
                 return;
             }
 
-            Velocity = Velocity with
+            if (!_animationPlayer.IsPlaying())
             {
-                Y = Velocity.Y - FlapForce * (float)delta * Input.GetActionStrength(InputActionMap.Flap) * _defaultGravity * GravityScale
-            };
+                _animationPlayer.Play(FlippityFlap.Animations.Bird.Flap);
+            }
         }
     }
 

@@ -22,6 +22,7 @@ color = Color(0.92549, 0.686275, 0.956863, 1)
 
 [node name="Bird" parent="." instance=ExtResource("1_7oowg")]
 position = Vector2(253, 354)
+scale = Vector2(0.25, 0.25)
 FlapForce = 2.5
 
 [node name="SpawnTimer" type="Timer" parent="."]

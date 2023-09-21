@@ -36,6 +36,13 @@ public partial class PipePairSpawner : Node2D
         return warnings.ToArray();
     }
 
+    protected override void Dispose(bool disposing)
+    {
+        GameManager.Instance.GameOverChanged -= OnGameOver;
+
+        base.Dispose(disposing);
+    }
+
     public void OnSpawnTimerTimeout()
     {
         SpawnPipePair();

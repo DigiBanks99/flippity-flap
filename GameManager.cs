@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class GameManager : Node2D
 {
@@ -37,7 +36,7 @@ public partial class GameManager : Node2D
     internal void Reset()
     {
         GD.Print("Reset");
-        _isGameOver = true;
+        _isGameOver = false;
         Score = 0;
         EmitSignal(nameof(GameOverChanged), _isGameOver);
     }

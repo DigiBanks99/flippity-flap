@@ -9,7 +9,7 @@ public partial class Hud : Control
     private bool _paused;
     [Node]
     private ColorRect _pauseOverlay;
-    [Node("PauseOverlay/VBoxContainer/ResumeButton")]
+    [Node("PauseOverlay/Menu/ResumeButton")]
     private Button _resumeButton;
     private SceneTree _sceneTree;
     [Node]
@@ -39,6 +39,16 @@ public partial class Hud : Control
         UpdateScoreText(0);
     }
 
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+
+        if (what == NotificationSceneInstantiated)
+        {
+            WireNodes();
+        }
+    }
+
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event.IsActionPressed("pause") && !GameManager.Instance.IsGameOver)
@@ -46,6 +56,14 @@ public partial class Hud : Control
             Paused = !Paused;
             GetViewport().SetInputAsHandled(); // stops propogation
         }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        GameManager.Instance.ScoreUpdated -= OnScoreUpdated;
+        GameManager.Instance.GameOverChanged -= OnGameOver;
+
+        base.Dispose(disposing);
     }
 
     public void OnResumePressed()

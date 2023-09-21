@@ -13,10 +13,27 @@ public partial class BackgroundLayer : CanvasLayer
 
         WireNodes();
 
-        GameManager.Instance.GameOverChanged += OnGameOverChanged;
+        GameManager.Instance.GameOverChanged += OnGameOver;
     }
 
-    private void OnGameOverChanged(bool isGameOver)
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+
+        if (what == NotificationSceneInstantiated)
+        {
+            WireNodes();
+        }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        GameManager.Instance.GameOverChanged -= OnGameOver;
+
+        base.Dispose(disposing);
+    }
+
+    private void OnGameOver(bool isGameOver)
     {
         _cloudParticles.Emitting = !isGameOver;
         _cloudParticles.SpeedScale = isGameOver ? 0f : 1f;

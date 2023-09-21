@@ -23,10 +23,13 @@ public partial class GameManager : Node2D
 
     [Signal]
     public delegate void ScoreUpdatedEventHandler(int score);
+    [Signal]
+    public delegate void GameOverChangedEventHandler(bool isGameOver);
 
     public void GameOver()
     {
         GD.Print("Game over!");
         _isGameOver = true;
+        EmitSignal(nameof(GameOverChanged), _isGameOver);
     }
 }

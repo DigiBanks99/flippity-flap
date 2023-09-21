@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cswt2ae18j12g"]
+
+[ext_resource type="Script" path="res://ui/QuitButton.cs" id="1_cnfht"]
+
+[node name="QuitButton" type="Button"]
+text = "Quit"
+script = ExtResource("1_cnfht")
+
+[connection signal="pressed" from="." to="." method="OnButtonPressed"]

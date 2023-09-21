@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://brvenkgeioo2"]
+
+[ext_resource type="Script" path="res://BackgroundLayer.cs" id="1_cc7hk"]
+[ext_resource type="Material" uid="uid://b0gbc231g8s72" path="res://assets/cloud_particles.tres" id="1_g82w8"]
+[ext_resource type="Texture2D" uid="uid://ctes2p08ygmb5" path="res://assets/cloud.png" id="2_1i4tl"]
+
+[node name="BackgroundLayer" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_cc7hk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.92549, 0.686275, 0.956863, 1)
+
+[node name="CloudParticles" type="GPUParticles2D" parent="."]
+position = Vector2(1468, 324)
+amount = 12
+process_material = ExtResource("1_g82w8")
+texture = ExtResource("2_1i4tl")
+lifetime = 17.0
+preprocess = 17.0
+visibility_rect = Rect2(-1500, -325, 1500, 650)
+local_coords = true

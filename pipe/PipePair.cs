@@ -1,9 +1,24 @@
 using Godot;
+using GodotUtilities;
 
+[Scene]
 public partial class PipePair : Node2D
 {
+    [Node]
+    public AudioStreamPlayer2D _tingPlayer;
+
     [Export]
     public float Speed { get; set; } = 300;
+
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+
+        if (what == NotificationSceneInstantiated)
+        {
+            WireNodes();
+        }
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -26,5 +41,6 @@ public partial class PipePair : Node2D
     public void OnGapBodyEntered(Node2D body)
     {
         GameManager.Instance.Score++;
+        _tingPlayer.Play();
     }
 }

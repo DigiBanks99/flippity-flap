@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vbl8aqxqfxo"]
+[gd_scene load_steps=5 format=3 uid="uid://b8vbl8aqxqfxo"]
 
 [ext_resource type="PackedScene" uid="uid://cf5ullhyt2fvd" path="res://pipe/pipe.tscn" id="1_e22pr"]
 [ext_resource type="Script" path="res://pipe/PipePair.cs" id="2_m7lpo"]
+[ext_resource type="AudioStream" uid="uid://we1hnw1bsj2n" path="res://assets/ting.wav" id="3_un1ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djuv1"]
 size = Vector2(267, 1323.67)
@@ -26,6 +27,9 @@ shape = SubResource("RectangleShape2D_djuv1")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(75, 0, 130, 20)
+
+[node name="TingPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_un1ac")
 
 [connection signal="body_entered" from="Gap" to="." method="OnGapBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="OnScreenExited"]

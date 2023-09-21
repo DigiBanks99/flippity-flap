@@ -1,6 +1,7 @@
 using FlippityFlap;
 using Godot;
 using GodotUtilities;
+using System.Threading.Tasks;
 
 [Scene]
 public partial class Bird : CharacterBody2D
@@ -9,6 +10,8 @@ public partial class Bird : CharacterBody2D
 
     [Node]
     private AnimationPlayer _animationPlayer;
+    [Node]
+    private AudioStreamPlayer2D _gameOverSoundPlayer;
 
     [Export]
     public float FlapForce { get; set; }
@@ -42,8 +45,11 @@ public partial class Bird : CharacterBody2D
 
     public void Kill()
     {
+        _gameOverSoundPlayer.Play();
+
         IsDead = true;
         GD.Print("Player died");
+
         GameManager.Instance.GameOver();
     }
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cryk4dtjqguph"]
+[gd_scene load_steps=10 format=3 uid="uid://cryk4dtjqguph"]
 
 [ext_resource type="Script" path="res://player/Bird.cs" id="1_4mxhk"]
 [ext_resource type="Texture2D" uid="uid://cspu434l5mouf" path="res://assets/birdbody.png" id="1_xkt3l"]
 [ext_resource type="Texture2D" uid="uid://d3jsqe57cd4jy" path="res://assets/birdwingup.png" id="2_h4e0a"]
 [ext_resource type="Texture2D" uid="uid://b5pgmrx04ovv6" path="res://assets/birdwingdown.png" id="4_qnx6f"]
+[ext_resource type="AudioStream" uid="uid://c3x2ms8u08ras" path="res://assets/game-over.wav" id="5_l8doi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yqo3"]
 radius = 216.002
@@ -105,5 +106,9 @@ shape = SubResource("CircleShape2D_8yqo3")
 libraries = {
 "": SubResource("AnimationLibrary_fjkmg")
 }
+
+[node name="GameOverSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("5_l8doi")
 
 [connection signal="body_entered" from="PipeDetector" to="." method="OnPipeDetectorBodyEntered"]

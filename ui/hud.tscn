@@ -22,6 +22,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 89.0
 offset_bottom = 39.0
+theme_override_font_sizes/font_size = 32
 text = "Score: {0}"
 
 [node name="PauseOverlay" type="ColorRect" parent="."]
@@ -47,6 +48,7 @@ offset_right = 28.5
 offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Paused"
 horizontal_alignment = 1
 

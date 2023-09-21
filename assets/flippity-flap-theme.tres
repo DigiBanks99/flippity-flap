@@ -1,8 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://drw1eeirkwu0v"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://drw1eeirkwu0v"]
 
 [ext_resource type="StyleBox" uid="uid://cniqm02en7c3o" path="res://assets/theme/button_default.tres" id="1_jwotp"]
 [ext_resource type="StyleBox" uid="uid://cfeor8s4gbp7f" path="res://assets/theme/button_hover.tres" id="1_ofpwy"]
+[ext_resource type="FontFile" uid="uid://bh44i7gad07ma" path="res://assets/kenvector_future.ttf" id="3_1la2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghk6k"]
 
 [resource]
+default_font = ExtResource("3_1la2r")
 Button/styles/hover = ExtResource("1_ofpwy")
 Button/styles/normal = ExtResource("1_jwotp")
+Label/styles/normal = SubResource("StyleBoxEmpty_ghk6k")

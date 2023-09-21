@@ -18,17 +18,9 @@ public partial class PipePairSpawner : Node2D
     {
         base._Ready();
 
+        GameManager.Instance.GameOverChanged += OnGameOver;
+
         WireNodes();
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (GameManager.Instance.IsGameOver)
-        {
-            _spawnTimer.Stop();
-        }
     }
 
 
@@ -61,5 +53,17 @@ public partial class PipePairSpawner : Node2D
         pipePair.Position = new Vector2(SpawnPointX, GD.RandRange(100, 400));
 
         AddChild(pipePair);
+    }
+
+    private void OnGameOver(bool isGameOver)
+    {
+        if (isGameOver)
+        {
+            _spawnTimer.Stop();
+        }
+        else
+        {
+            _spawnTimer.Start();
+        }
     }
 }

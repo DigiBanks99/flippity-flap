@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc2rl6tddoyt2"]
+
+[ext_resource type="Script" path="res://ui/RestartButton.cs" id="1_m2qcx"]
+
+[node name="RestartButton" type="Button"]
+script = ExtResource("1_m2qcx")
+
+[connection signal="pressed" from="." to="." method="OnButtonPressed"]
